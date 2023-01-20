@@ -1,1 +1,86 @@
 /* You can add global styles to this file, and also import other style files */
+html {
+  box-sizing: border-box;
+}
+
+*, *::after, *::before {
+  box-sizing: inherit;
+}
+
+h1,h2,h3,p {
+  margin: 0;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+}
+
+/* Variables */
+:root {
+  /* Colors */
+  --clr-hsl-blue-5: 203, 30%, 26%;
+  --clr-hsl-red-2: 0, 85%, 58%;
+  --clr-hsl-red-5: 0, 65%, 49%;
+  --clr-hsl-white: 0, 0%, 100%;
+}
+
+body {
+  font-family: 'Poppins', sans-serif; /*400, 500*/
+
+  /* Font size */
+  /* Smartphone */
+  --fs-smt-base: 1.1rem;
+  --fs-smt-md: 1.4rem;
+  --fs-smt-lg: 1.8rem;
+  --fs-smt-xlg: 2.1rem;
+
+  /* Tablet */
+  --fs-tbt-base: 1.3rem;
+  --fs-tbt-md: 1.8rem;
+  --fs-tbt-lg: 2rem;
+  --fs-tbt-xlg: 2.5rem;
+
+  /* Desktop */
+  --fs-dsk-base: 1.3rem;
+  --fs-dsk-md: 1.8rem;
+  --fs-dsk-lg: 2rem;
+  --fs-dsk-xlg: 2.5rem;
+
+}
+
+/* Defaults */
+body {
+  /* Typography */
+  font-family: 'Inter', sans-serif; /* 400 */
+  font-weight: 400;
+
+  /* Fonts */
+  --fs-base: var(--fs-smt-base);
+  --fs-md: var(--fs-smt-md);
+  --fs-lg: var(--fs-smt-lg);
+  --fs-xlg: var(--fs-smt-xlg);
+
+}
+
+@media screen and (min-width: 744px) {
+  body {
+    /* Fonts */
+    --fs-base: var(--fs-tbt-base);
+    --fs-md: var(--fs-tbt-md);
+    --fs-lg: var(--fs-tbt-lg);
+    --fs-xlg: var(--fs-tbt-xlg);
+  }
+
+}
+
+@media screen and (min-width: 1000px) {
+  body {
+    /* Fonts */
+    --fs-base: var(--fs-dsk-base);
+    --fs-md: var(--fs-dsk-md);
+    --fs-lg: var(--fs-dsk-lg);
+    --fs-xlg: var(--fs-dsk-xlg);
+  }
+
+}
