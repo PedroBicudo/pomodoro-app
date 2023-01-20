@@ -1,0 +1,76 @@
+.pomodoro {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+.pomodoro__header {
+  margin-bottom: 1rem;
+}
+
+.pomodoro__state {
+  text-align: center;
+  font-size: var(--fs-lg);
+  color: hsl(var(--clr-hsl-white));
+}
+
+.pomodoro__pic {
+  display: inline-block;
+  max-width: 364px;
+
+}
+
+.pomodoro__img {
+  display: inline-block;
+  width: 100%;
+  object-fit: contain;
+
+}
+
+.pomodoro__time {
+  font-size: var(--fs-xlg);
+  color: hsl(var(--clr-hsl-white));
+  margin-bottom: 1.5rem;
+
+}
+
+.pomodoro__actions {
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  gap: 3rem;
+}
+
+.pomodoro__btn {
+  display: inline-block;
+  width: 46px;
+  height: 46px;
+  cursor: pointer;
+  border: none;
+  background-color: transparent;
+  background-color: hsl(var(--clr-hsl-red-2));
+  mask-repeat: no-repeat;
+  mask-size: contain;
+  transition: background-color 200ms;
+}
+
+.pomodoro__btn:hover,
+.pomodoro__btn:active,
+.pomodoro__btn:focus {
+  background-color: hsl(var(--clr-hsl-red-5));
+}
+
+.pomodoro__btn--play {
+  mask-image: url("/assets/img/svg/btn-play.svg");
+  transform: translateX(.25rem);
+}
+
+.pomodoro__btn--pause {
+  mask-image: url("/assets/img/svg/btn-pause.svg");
+}
+
+.pomodoro__btn--stop {
+  mask-image: url("/assets/img/svg/btn-stop.svg");
+}

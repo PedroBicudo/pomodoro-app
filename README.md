@@ -22,6 +22,7 @@ ng s
 ### Tecnologias usadas
 - HTML e CSS
 - Typescript e Angular
+- ngx-countdown
 - Figma
 ### Autor
 - Linkedin - [PedroBicudo](https://www.linkedin.com/in/pedro-bicudo)

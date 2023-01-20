@@ -1,0 +1,30 @@
+<div class="pomodoro">
+  <header class="pomodoro__header">
+    <h2 class="pomodoro__state">{{currentState?.name ?? ''}}</h2>
+  </header>
+  <picture class="pomodoro__pic">
+    <img src="assets/img/png/tomato.png" alt="Tomato" class="pomodoro__img">
+  </picture>
+  <countdown
+    class="pomodoro__time"
+    [config]="currentState?.config ?? {}"
+    (event)="onUpdateState($event)"
+    #countdown></countdown>
+  <div class="pomodoro__actions">
+    <button
+      *ngIf="!running || paused"
+      (click)="onStart()"
+      class="pomodoro__btn pomodoro__btn--play"
+    ></button>
+    <button
+      (click)="onPause()"
+      *ngIf="running && !paused"
+      class="pomodoro__btn pomodoro__btn--pause"
+    ></button>
+    <button
+      (click)="onStop()"
+      *ngIf="running"
+      class="pomodoro__btn pomodoro__btn--stop"
+    ></button>
+  </div>
+</div>
