@@ -1,0 +1,32 @@
+.nav {
+  position: relative;
+  padding: 1rem;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+}
+
+.tab {
+  text-align: center;
+  font-size: var(--fs-base);
+  color: hsl(var(--clr-hsl-white));
+  font-weight: 400;
+}
+
+.nav__item {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+}
+
+.nav__item:hover,
+.nav__item:active,
+.nav__item:focus {
+  filter: contrast(70%);
+}
+
+.nav__item > .nav-icon {
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+}
