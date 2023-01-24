@@ -23,6 +23,8 @@ ng s
 - HTML e CSS
 - Typescript e Angular
 - ngx-countdown
+- Notification API
+- Web Audio API
 - Figma
 ### Autor
 - Linkedin - [PedroBicudo](https://www.linkedin.com/in/pedro-bicudo)
