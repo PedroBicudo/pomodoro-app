@@ -40,4 +40,12 @@ export class PomodoroConfigService {
     };
   }
 
+  minutesFromState(stateName?: "Pomodoro" | "Break" | "Long Break" | "") {
+    switch (stateName) {
+      case 'Break': return this.timeConfig.breakMinutes;
+      case 'Long Break': return this.timeConfig.longBreakMinutes;
+      default: return this.timeConfig.pomodoroMinutes;
+    }
+  }
+
 }

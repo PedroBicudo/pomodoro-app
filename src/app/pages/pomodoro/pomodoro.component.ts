@@ -1,8 +1,9 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit, ViewChild } from '@angular/core';
 import { CountdownComponent, CountdownEvent } from 'ngx-countdown';
 import { PomodoroConfigService } from 'src/app/shared/services/pomodoro-config.service';
 import PomodoroState from './models/pomodoro-state.model';
 import { BeepService } from './services/beep.service';
+import { NotificationService } from './services/notification.service';
 
 @Component({
   selector: 'app-pomodoro',
@@ -22,7 +23,9 @@ export class PomodoroComponent implements OnInit {
 
   constructor(
     private pomodoroConfigService: PomodoroConfigService,
-    private beepService: BeepService
+    private beepService: BeepService,
+    private notificationService: NotificationService,
+    private changeRef: ChangeDetectorRef
   ) { }
 
   ngOnInit(): void {
@@ -56,6 +59,9 @@ export class PomodoroComponent implements OnInit {
       this.running = false;
       this.paused = false;
 
+      this.notifySession();
+      this.startIfBreakOrLongBreak();
+
       this.beepService.beep()
         .then(audio => {
           audio.start();
@@ -64,6 +70,31 @@ export class PomodoroComponent implements OnInit {
           console.error("Error: "+error);
         });
     }
+  }
+
+  private notifySession() {
+    const sessionChangeEvent = () => {
+      if (this.currentState?.name !== 'Pomodoro') return;
+
+      this.onStart();
+      this.changeRef.detectChanges();
+    };
+
+    this.notificationService.notify(
+      sessionChangeEvent,
+      3000,
+      this.currentState?.name,
+      `${this.pomodoroConfigService.minutesFromState(this.currentState?.name)} minutes left`,
+    );
+
+  }
+
+  private startIfBreakOrLongBreak() {
+    setTimeout(() => {
+      if (this.currentState?.name !== 'Pomodoro') {
+        this.onStart();
+      }
+    }, 0);
   }
 
   populateCycleQueue() {
