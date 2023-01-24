@@ -7,6 +7,35 @@
 ## Motivação
 - Praticar Angular.
 
+## Screenshots
+<details>
+  <summary><strong>Desktop</strong></summary>
+  <div align="center">
+    <div>
+      <strong><h4>Pomodoro</h4></strong>
+      <img 
+        src="https://user-images.githubusercontent.com/43938917/214399845-a0d115ea-6d9f-4163-b3b7-f57241a45950.png" 
+        width="500"
+        alt="Pomodoro App Desktop"
+      >
+    </div>
+  </div>
+</details>
+
+<details>
+  <summary><strong>Mobile</strong></summary>
+  <div align="center">
+    <div>
+      <strong><h4>Pomodoro</h4></strong>
+      <img
+        src="https://user-images.githubusercontent.com/43938917/214400935-10cd450d-65d0-4850-acb0-27f946119231.png"
+        width="200"
+        alt="Pomodoro App Mobile"
+      >
+    </div>
+  </div>
+</details>
+
 ## Design
 [Figma](https://www.figma.com/file/Protiw6j7rn789weqD1pqR/Pomodo-App?node-id=1%3A197&t=oiWB6EIDC010Lu46-1)
 ## Como executar o projeto?
