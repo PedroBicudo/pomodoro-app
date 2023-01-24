@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { CountdownComponent, CountdownEvent } from 'ngx-countdown';
 import { PomodoroConfigService } from 'src/app/shared/services/pomodoro-config.service';
 import PomodoroState from './models/pomodoro-state.model';
+import { BeepService } from './services/beep.service';
 
 @Component({
   selector: 'app-pomodoro',
@@ -20,7 +21,8 @@ export class PomodoroComponent implements OnInit {
   paused: boolean = false;
 
   constructor(
-    private pomodoroConfigService: PomodoroConfigService
+    private pomodoroConfigService: PomodoroConfigService,
+    private beepService: BeepService
   ) { }
 
   ngOnInit(): void {
@@ -53,6 +55,14 @@ export class PomodoroComponent implements OnInit {
       this.currentState = this.statesQueue.shift();
       this.running = false;
       this.paused = false;
+
+      this.beepService.beep()
+        .then(audio => {
+          audio.start();
+        })
+        .catch(error => {
+          console.error("Error: "+error);
+        });
     }
   }
 
