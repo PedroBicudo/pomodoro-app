@@ -1,0 +1,27 @@
+<div class="option">
+  <header class="option__header">
+    <h2 class="option__title">{{ title }}</h2>
+    <span
+      class="option__status"
+      [ngClass]="{
+        'option__status--saving': optionAction === 'saving',
+        'option__status--saved': optionAction === 'saved',
+        'option__status--failed': optionAction === 'failed'
+      }"
+      [title]="optionAction"
+    >
+    </span>
+  </header>
+  <div class="option__content">
+    <input
+      class="option__input"
+      type="range"
+      min="5"
+      max="300"
+      step="5"
+      [(ngModel)]="time"
+      (ngModelChange)="onChangeOption()"
+    >
+    <span class="option__time">{{ time * 1000 * 60 | date:'HH:mm:ss':'UTC'}}</span>
+  </div>
+</div>

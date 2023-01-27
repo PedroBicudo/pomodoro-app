@@ -9,12 +9,14 @@ import { Component, OnInit } from '@angular/core';
 export class NavComponent implements OnInit {
 
   currentTab!: string;
+  isPomodoro: boolean = true;
 
   constructor(private location: Location) { }
 
   ngOnInit(): void {
     this.location.onUrlChange((url, _) => {
       this.currentTab = url[1].toUpperCase()+url.substring(2);
+      this.isPomodoro = this.currentTab === "Pomodoro";
     });
   }
 

@@ -1,4 +1,7 @@
 <nav class="nav">
+  <a routerLink="/pomodoro" class="nav__item nav__item--left" *ngIf="!isPomodoro">
+    <img src="assets/img/svg/arrow-left-icon.svg" class="nav-icon">
+  </a>
   <h1 class="tab">{{ currentTab }}</h1>
   <a routerLink="/settings" class="nav__item">
     <img src="assets/img/svg/settings-icon.svg" class="nav-icon">

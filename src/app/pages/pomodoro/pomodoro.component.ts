@@ -1,6 +1,9 @@
-import { ChangeDetectorRef, Component, OnInit, ViewChild } from '@angular/core';
+import { ChangeDetectorRef, Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { CountdownComponent, CountdownEvent } from 'ngx-countdown';
+import { Subscription } from 'rxjs';
+import TimeConfig from 'src/app/shared/models/time-config.model';
 import { PomodoroConfigService } from 'src/app/shared/services/pomodoro-config.service';
+import { SettingsService } from 'src/app/shared/services/settings.service';
 import PomodoroState from './models/pomodoro-state.model';
 import { BeepService } from './services/beep.service';
 import { NotificationService } from './services/notification.service';
@@ -10,7 +13,7 @@ import { NotificationService } from './services/notification.service';
   templateUrl: './pomodoro.component.html',
   styleUrls: ['./pomodoro.component.css']
 })
-export class PomodoroComponent implements OnInit {
+export class PomodoroComponent implements OnInit, OnDestroy {
 
   @ViewChild("countdown", {static: true})
   countDown!: CountdownComponent;
@@ -21,16 +24,22 @@ export class PomodoroComponent implements OnInit {
   running: boolean = false;
   paused: boolean = false;
 
+  timeConfigSub$!: Subscription;
+
   constructor(
     private pomodoroConfigService: PomodoroConfigService,
+    private settingsService: SettingsService,
     private beepService: BeepService,
     private notificationService: NotificationService,
     private changeRef: ChangeDetectorRef
   ) { }
 
   ngOnInit(): void {
-    this.populateCycleQueue();
-    this.currentState = this.statesQueue.shift();
+    this.timeConfigSub$ = this.settingsService.timeConfig$
+      .subscribe((timeConfig: TimeConfig) => {
+        this.pomodoroConfigService.updateConfig(timeConfig);
+        this.onStop();
+      });
   }
 
   onStart() {
@@ -108,6 +117,11 @@ export class PomodoroComponent implements OnInit {
       { name: "Pomodoro", config: this.pomodoroConfigService.pomodoroConfig() },
       { name: "Long Break", config: this.pomodoroConfigService.longBreakConfig() }
     ];
+  }
+
+  ngOnDestroy(): void {
+    if (this.timeConfigSub$ === null) return;
+    this.timeConfigSub$.unsubscribe();
   }
 
 }

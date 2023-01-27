@@ -1,0 +1,113 @@
+.option {
+  width: 264px;
+}
+
+.option__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.option__title {
+  font-size: calc(var(--fs-base) - .1rem);
+  color: hsl(var(--clr-hsl-white));
+  font-weight: 400;
+}
+
+.option__status {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.option__status.option__status--saving {
+  background-image: url("/assets/img/svg/reload-icon.svg");
+  animation: rotate 4s linear infinite;
+  transform-origin: center;
+  translate: 0rem .4rem;
+}
+
+.option__status.option__status--saved {
+  background-image: url("/assets/img/svg/checked-icon.svg");
+  translate: 0rem .4rem;
+}
+
+.option__status.option__status--failed {
+  background-image: url("/assets/img/svg/failed-icon.svg");
+  translate: 0rem .4rem;
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotateZ(0deg);
+  }
+
+  100% {
+    transform: rotateZ(360deg);
+  }
+
+}
+
+.option__content {
+  display: flex;
+  flex-direction: column;
+  gap: .25rem;
+}
+
+.option__input[type=range] {
+  cursor: pointer;
+  margin-top: .6rem;
+  appearance: none;
+  width: 100%;
+  background-color: transparent;
+}
+
+.option__time {
+  font-size: calc(var(--fs-base) - .1rem);
+  margin-left: auto;
+  color: hsl(var(--clr-hsl-white));
+}
+
+/* Chrome */
+.option__input[type=range]::-webkit-slider-runnable-track {
+  cursor: pointer;
+  width: 100%;
+  height: 2px;
+  background-color: hsl(var(--clr-hsl-white));
+  border: none;
+  border-radius: 30px;
+}
+
+.option__input[type=range]::-webkit-slider-thumb {
+  appearance: none;
+  width: 12px;
+  height: 12px;
+  background-color: hsl(var(--clr-hsl-red-2));
+  transform: translateY(-4px);
+  border-radius: 50%;
+}
+
+/* Firefox */
+.option__input[type=range]::-moz-range-track {
+  cursor: pointer;
+  width: 100%;
+  height: 2px;
+  background-color: hsl(var(--clr-hsl-white));
+  border: none;
+  border-radius: 30px;
+}
+
+.option__input[type=range]::-moz-range-thumb {
+  border: none;
+  background-color: hsl(var(--clr-hsl-red-2));
+}
+
+@media screen and (min-width: 700px) {
+  .option {
+    width: 533px;
+  }
+
+}
+

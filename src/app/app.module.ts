@@ -6,17 +6,23 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { PomodoroComponent } from './pages/pomodoro/pomodoro.component';
 import { NavComponent } from './shared/components/nav/nav.component';
+import { SettingsComponent } from './pages/settings/settings.component';
+import { OptionComponent } from './pages/settings/components/option/option.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavComponent,
-    PomodoroComponent
+    PomodoroComponent,
+    SettingsComponent,
+    OptionComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    CountdownModule
+    CountdownModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

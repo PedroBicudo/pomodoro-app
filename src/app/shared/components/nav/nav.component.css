@@ -19,6 +19,11 @@
   right: 1rem;
 }
 
+.nav__item--left {
+  left: 1rem;
+  right: auto;
+}
+
 .nav__item:hover,
 .nav__item:active,
 .nav__item:focus {
