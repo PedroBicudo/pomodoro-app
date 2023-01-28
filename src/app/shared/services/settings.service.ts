@@ -43,16 +43,16 @@ export class SettingsService {
     }
 
     const minute = Number.parseFloat(settingMinute);
-    if (this.isValidMinute(minute)) {
+    if (this.isInvalidMinute(minute)) {
       localStorage.removeItem(name);
       return defaultMinute;
     }
 
-    return Number.parseFloat(settingMinute);
+    return minute;
   }
 
-  private isValidMinute(minute: number): boolean {
-    return isNaN(minute) || minute <= 0;
+  private isInvalidMinute(minute: number): boolean {
+    return isNaN(minute) || minute < 0.1;
   }
 
 }
