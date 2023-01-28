@@ -90,11 +90,16 @@ export class PomodoroComponent implements OnInit, OnDestroy {
       this.changeRef.detectChanges();
     };
 
+    let message = this.getMinutesOrSecondsLeft();
+    if (this.currentState?.name === 'Pomodoro') {
+      message += "Click the button to Start Pomodoro.";
+    }
+
     this.notificationService.notify(
       sessionChangeEvent,
       3000,
       this.currentState?.name,
-      this.getMinutesOrSecondsLeft(),
+      message,
     );
 
   }
@@ -103,10 +108,10 @@ export class PomodoroComponent implements OnInit, OnDestroy {
     const minutesLeft = this.pomodoroConfigService.minutesFromState(this.currentState?.name);
 
     if (minutesLeft < 1) {
-      return `${minutesLeft*60} seconds left`;
+      return `${minutesLeft*60} seconds left.`;
     }
 
-    return `${minutesLeft} minutes left`;
+    return `${minutesLeft} minutes left.`;
   }
 
   private startIfCurrentStateNameIsBreakOrLongBreak() {
