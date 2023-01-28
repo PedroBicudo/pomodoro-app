@@ -90,9 +90,19 @@ export class PomodoroComponent implements OnInit, OnDestroy {
       sessionChangeEvent,
       3000,
       this.currentState?.name,
-      `${this.pomodoroConfigService.minutesFromState(this.currentState?.name)} minutes left`,
+      this.getMinutesOrSecondsLeft(),
     );
 
+  }
+
+  private getMinutesOrSecondsLeft(): string {
+    const minutesLeft = this.pomodoroConfigService.minutesFromState(this.currentState?.name);
+
+    if (minutesLeft < 1) {
+      return `${minutesLeft*60} seconds left`;
+    }
+
+    return `${minutesLeft} minutes left`;
   }
 
   private startIfCurrentStateNameIsBreakOrLongBreak() {
