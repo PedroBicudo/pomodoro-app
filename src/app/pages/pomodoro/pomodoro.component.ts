@@ -74,7 +74,7 @@ export class PomodoroComponent implements OnInit, OnDestroy {
     this.paused = false;
 
     this.notifySession();
-    this.startIfBreakOrLongBreak();
+    this.startIfCurrentStateNameIsBreakOrLongBreak();
     this.startBeepSound();
   }
 
@@ -95,7 +95,7 @@ export class PomodoroComponent implements OnInit, OnDestroy {
 
   }
 
-  private startIfBreakOrLongBreak() {
+  private startIfCurrentStateNameIsBreakOrLongBreak() {
     setTimeout(() => {
       if (this.currentState?.name !== 'Pomodoro') {
         this.onStart();
