@@ -17,6 +17,7 @@
 }
 
 .pomodoro__pic {
+  position: relative;
   display: inline-block;
   max-width: 364px;
 
@@ -73,4 +74,19 @@
 
 .pomodoro__btn--stop {
   mask-image: url("/assets/img/svg/btn-stop.svg");
+}
+
+.pomodoro__btn--next {
+  position: absolute;
+  top: 65%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  mask-image: url("/assets/img/svg/next-icon.svg");
+  background-color: hsl(var(--clr-hsl-green-2), 20%);
+}
+
+.pomodoro__btn--next:hover,
+.pomodoro__btn--next:active,
+.pomodoro__btn--next:focus {
+  background-color: hsl(var(--clr-hsl-green-2));
 }

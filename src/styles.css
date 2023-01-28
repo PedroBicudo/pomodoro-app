@@ -19,6 +19,7 @@ body {
 /* Variables */
 :root {
   /* Colors */
+  --clr-hsl-green-2: 96, 61%, 56%;
   --clr-hsl-blue-5: 203, 30%, 26%;
   --clr-hsl-red-2: 0, 85%, 58%;
   --clr-hsl-red-5: 0, 65%, 49%;

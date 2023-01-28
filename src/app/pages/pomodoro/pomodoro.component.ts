@@ -67,15 +67,19 @@ export class PomodoroComponent implements OnInit, OnDestroy {
   }
 
   onDone() {
+    this.onNext();
+    this.notifySession();
+    this.startIfCurrentStateNameIsBreakOrLongBreak();
+    this.startBeepSound();
+  }
+
+  onNext() {
     if (this.statesQueue.length === 0) this.populateCycleQueue();
 
     this.currentState = this.statesQueue.shift();
     this.running = false;
     this.paused = false;
 
-    this.notifySession();
-    this.startIfCurrentStateNameIsBreakOrLongBreak();
-    this.startBeepSound();
   }
 
   private notifySession() {

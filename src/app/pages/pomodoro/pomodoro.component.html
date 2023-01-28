@@ -4,6 +4,12 @@
   </header>
   <picture class="pomodoro__pic">
     <img src="assets/img/png/tomato.png" alt="Tomato" class="pomodoro__img">
+    <button
+      *ngIf="running"
+      class="pomodoro__btn pomodoro__btn--next"
+      (click)="onNext()"
+      [title]="'Skip '+currentState?.name"
+    ></button>
   </picture>
   <countdown
     class="pomodoro__time"
