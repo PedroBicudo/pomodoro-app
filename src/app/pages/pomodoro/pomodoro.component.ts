@@ -62,23 +62,20 @@ export class PomodoroComponent implements OnInit, OnDestroy {
   }
 
   onUpdateState(event: CountdownEvent) {
-    if (event.action === "done") {
-      if (this.statesQueue.length === 0) this.populateCycleQueue();
-      this.currentState = this.statesQueue.shift();
-      this.running = false;
-      this.paused = false;
+    if (event.action !== "done") return;
+    this.onDone();
+  }
 
-      this.notifySession();
-      this.startIfBreakOrLongBreak();
+  onDone() {
+    if (this.statesQueue.length === 0) this.populateCycleQueue();
 
-      this.beepService.beep()
-        .then(audio => {
-          audio.start();
-        })
-        .catch(error => {
-          console.error("Error: "+error);
-        });
-    }
+    this.currentState = this.statesQueue.shift();
+    this.running = false;
+    this.paused = false;
+
+    this.notifySession();
+    this.startIfBreakOrLongBreak();
+    this.startBeepSound();
   }
 
   private notifySession() {
@@ -104,6 +101,16 @@ export class PomodoroComponent implements OnInit, OnDestroy {
         this.onStart();
       }
     }, 0);
+  }
+
+  private startBeepSound() {
+    this.beepService.beep()
+      .then(audio => {
+        audio.start();
+      })
+      .catch(error => {
+        console.error("Error: "+error);
+      });
   }
 
   populateCycleQueue() {
