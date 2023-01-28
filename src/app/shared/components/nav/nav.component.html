@@ -3,7 +3,7 @@
     <img src="assets/img/svg/arrow-left-icon.svg" class="nav-icon">
   </a>
   <h1 class="tab">{{ currentTab }}</h1>
-  <a routerLink="/settings" class="nav__item">
+  <a routerLink="/settings" class="nav__item" *ngIf="!(currentTab === 'Settings')">
     <img src="assets/img/svg/settings-icon.svg" class="nav-icon">
   </a>
 </nav>
